@@ -90,7 +90,10 @@ void saveRecordsToFile(const std::vector<Record>& records, const std::string& fi
 std::vector<Record> loadRecordsFromFile(const std::string& filename);
 
 // 从TXT文件导入记录
-std::vector<Record> importRecordsFromTxt(const std::string& filename);
+// std::vector<Record> importRecordsFromTxt(const std::string& filename);
+
+// 导出记录到TXT文件（表格格式）
+void exportRecordsToTxt(const std::vector<Record>& records, const std::string& filename);
 
 // -----------------------
 // 统计分析模块
@@ -176,4 +179,4 @@ AIAnalysisResult generateAIAnalysis(const std::vector<Record>& records,
                                    const std::string& startDate, 
                                    const std::string& endDate);
 
-#endif // FINANCE_MANAGER_H
+#endif // FINANCE_MANAGER_H

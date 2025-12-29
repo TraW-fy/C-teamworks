@@ -84,17 +84,23 @@ void printExpenseDistribution(const std::vector<Record>& records,
     double transportPercent = (transportAmount / totalExpense) * 100;
     
     // 打印消费分布
-    std::cout << "\n=== 消费分布 ===" << std::endl;
-    std::cout << "总支出: " << std::fixed << std::setprecision(2) << totalExpense << " 元" << std::endl;
-    std::cout << "-------------------------------" << std::endl;
-    std::cout << "餐饮: " << std::fixed << std::setprecision(2) << foodAmount << " 元 (" << std::fixed << std::setprecision(1) << foodPercent << "%)" << std::endl;
-    std::cout << "学习: " << std::fixed << std::setprecision(2) << studyAmount << " 元 (" << std::fixed << std::setprecision(1) << studyPercent << "%)" << std::endl;
-    std::cout << "娱乐: " << std::fixed << std::setprecision(2) << entertainmentAmount << " 元 (" << std::fixed << std::setprecision(1) << entertainmentPercent << "%)" << std::endl;
-    std::cout << "交通: " << std::fixed << std::setprecision(2) << transportAmount << " 元 (" << std::fixed << std::setprecision(1) << transportPercent << "%)" << std::endl;
-    std::cout << "-------------------------------" << std::endl;
+    std::cout << "\n";
+    std::cout << "┌─────────────────────────────────────────┐" << std::endl;
+    std::cout << "│              📊 消费分布统计              │" << std::endl;
+    std::cout << "└─────────────────────────────────────────┘" << std::endl;
+    std::cout << "总支出: 📈 " << std::fixed << std::setprecision(2) << totalExpense << " 元" << std::endl;
+    std::cout << "------------------------------------------" << std::endl;
+    std::cout << "🍜 餐饮: " << std::fixed << std::setprecision(2) << foodAmount << " 元 (" << std::fixed << std::setprecision(1) << foodPercent << "%)" << std::endl;
+    std::cout << "📚 学习: " << std::fixed << std::setprecision(2) << studyAmount << " 元 (" << std::fixed << std::setprecision(1) << studyPercent << "%)" << std::endl;
+    std::cout << "🎮 娱乐: " << std::fixed << std::setprecision(2) << entertainmentAmount << " 元 (" << std::fixed << std::setprecision(1) << entertainmentPercent << "%)" << std::endl;
+    std::cout << "🚗 交通: " << std::fixed << std::setprecision(2) << transportAmount << " 元 (" << std::fixed << std::setprecision(1) << transportPercent << "%)" << std::endl;
+    std::cout << "------------------------------------------" << std::endl;
     
     // 打印字符饼图
-    std::cout << "\n=== 消费占比饼图 ===" << std::endl;
+    std::cout << "\n";
+    std::cout << "┌─────────────────────────────────────────┐" << std::endl;
+    std::cout << "│              🥧 消费占比饼图              │" << std::endl;
+    std::cout << "└─────────────────────────────────────────┘" << std::endl;
     const int totalChars = 50; // 饼图总字符数
     
     // 计算各分类的字符数
@@ -104,27 +110,27 @@ void printExpenseDistribution(const std::vector<Record>& records,
     int transportChars = totalChars - foodChars - studyChars - entertainmentChars;
     
     // 打印饼图
-    std::cout << "餐饮 [";
+    std::cout << "🍜 餐饮 [";
     for (int i = 0; i < foodChars; i++) {
-        std::cout << "█";
+        std::cout << "█"; // 餐饮使用红色
     }
     std::cout << "] " << std::fixed << std::setprecision(1) << foodPercent << "%" << std::endl;
     
-    std::cout << "学习 [";
+    std::cout << "📚 学习 [";
     for (int i = 0; i < studyChars; i++) {
-        std::cout << "█";
+        std::cout << "█"; // 学习使用蓝色
     }
     std::cout << "] " << std::fixed << std::setprecision(1) << studyPercent << "%" << std::endl;
     
-    std::cout << "娱乐 [";
+    std::cout << "🎮 娱乐 [";
     for (int i = 0; i < entertainmentChars; i++) {
-        std::cout << "█";
+        std::cout << "█"; // 娱乐使用绿色
     }
     std::cout << "] " << std::fixed << std::setprecision(1) << entertainmentPercent << "%" << std::endl;
     
-    std::cout << "交通 [";
+    std::cout << "🚗 交通 [";
     for (int i = 0; i < transportChars; i++) {
-        std::cout << "█";
+        std::cout << "█"; // 交通使用黄色
     }
     std::cout << "] " << std::fixed << std::setprecision(1) << transportPercent << "%" << std::endl;
 }

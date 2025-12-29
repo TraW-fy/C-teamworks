@@ -4,7 +4,7 @@
 void saveRecordsToFile(const std::vector<Record>& records, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cout << "无法打开文件 " << filename << " 进行保存！" << std::endl;
+        std::cout << "❌ 无法打开文件 " << filename << " 进行保存！" << std::endl;
         return;
     }
     
@@ -73,7 +73,7 @@ std::vector<Record> importRecordsFromTxt(const std::string& filename) {
     std::ifstream file(filename);
     
     if (!file.is_open()) {
-        std::cout << "无法打开文件 " << filename << " 进行导入！" << std::endl;
+        std::cout << "❌ 无法打开文件 " << filename << " 进行导入！" << std::endl;
         return records;
     }
     
@@ -95,7 +95,7 @@ std::vector<Record> importRecordsFromTxt(const std::string& filename) {
         
         // 检查字段数量
         if (fields.size() != 4) {
-            std::cout << "第 " << lineNum << " 行格式错误，跳过导入！" << std::endl;
+            std::cout << "❌ 第 " << lineNum << " 行格式错误，跳过导入！" << std::endl;
             continue;
         }
         
@@ -111,7 +111,7 @@ std::vector<Record> importRecordsFromTxt(const std::string& filename) {
         try {
             record.amount = std::stod(fields[1]);
         } catch (const std::exception& e) {
-            std::cout << "第 " << lineNum << " 行金额格式错误，跳过导入！" << std::endl;
+            std::cout << "❌ 第 " << lineNum << " 行金额格式错误，跳过导入！" << std::endl;
             continue;
         }
         
@@ -121,7 +121,7 @@ std::vector<Record> importRecordsFromTxt(const std::string& filename) {
         } else {
             // 日期格式错误，使用当前日期
             record.date = getCurrentDate();
-            std::cout << "第 " << lineNum << " 行日期格式错误，使用当前日期替代！" << std::endl;
+            std::cout << "⚠️  第 " << lineNum << " 行日期格式错误，使用当前日期替代！" << std::endl;
         }
         
         // 读取备注并自动分类
@@ -133,4 +133,43 @@ std::vector<Record> importRecordsFromTxt(const std::string& filename) {
     
     file.close();
     return records;
+}
+
+// 导出记录到TXT文件（表格格式）
+void exportRecordsToTxt(const std::vector<Record>& records, const std::string& filename) {
+    std::ofstream file(filename);
+    
+    if (!file.is_open()) {
+        std::cout << "❌ 无法打开文件 " << filename << " 进行导出！" << std::endl;
+        return;
+    }
+    
+    // 写入表头（表格格式）
+    file << std::left << std::setw(8) << "ID" << "|"
+         << std::setw(8) << "类型" << "|"
+         << std::setw(12) << "分类" << "|"
+         << std::setw(12) << "金额" << "|"
+         << std::setw(12) << "日期" << "|"
+         << std::setw(30) << "备注" << std::endl;
+    
+    // 写入分隔线
+    file << std::string(8, '-') << "|"
+         << std::string(8, '-') << "|"
+         << std::string(12, '-') << "|"
+         << std::string(12, '-') << "|"
+         << std::string(12, '-') << "|"
+         << std::string(30, '-') << std::endl;
+    
+    // 写入记录（表格格式）
+    for (const Record& record : records) {
+        file << std::left << std::setw(8) << record.id << "|"
+             << std::setw(8) << recordTypeToString(record.type) << "|"
+             << std::setw(12) << categoryToString(record.category) << "|"
+             << std::setw(12) << std::fixed << std::setprecision(2) << record.amount << "|"
+             << std::setw(12) << record.date << "|"
+             << std::setw(30) << record.description << std::endl;
+    }
+    
+    file.close();
+    std::cout << "✅ 记录已成功导出为表格文件 " << filename << "！" << std::endl;
 }
