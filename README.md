@@ -2,7 +2,7 @@
 
 > 文档版本: 1.0
 > 创建日期: 2025-12-29
-> 项目路径: `d:\C++project\project\withAI2\C++teamwork\`
+> 项目路径: `d:\C++project\project\Smart accounting book（AI）\C++teamwork\`
 
 ---
 
@@ -26,10 +26,10 @@
 ## 二、目录结构总览
 
 ```
-d:\C++project\project\withAI2\
+d:\C++project\project\Smart accounting book（AI）\
 │
-├── withAI2.sln                    # Visual Studio 解决方案文件（如有）
-├── withAI2.vcxproj               # Visual Studio 项目文件（如有）
+├── Smart accounting book（AI）.sln                    # Visual Studio 解决方案文件（如有）
+├── Smart accounting book（AI）.vcxproj               # Visual Studio 项目文件（如有）
 │
 ├── .vscode/                      # VS Code 工作区配置
 │   ├── launch.json               # 调试启动配置
@@ -476,7 +476,7 @@ SPARK_API_KEY=your_api_password
 
 ### 7.1 .vscode 配置
 
-#### 顶层配置 `withAI2/.vscode/`
+#### 顶层配置 `Smart accounting book（AI）/.vscode/`
 
 **launch.json**:
 ```json
@@ -503,7 +503,7 @@ SPARK_API_KEY=your_api_password
 
 ---
 
-#### 项目配置 `withAI2/C++teamwork/.vscode/`
+#### 项目配置 `Smart accounting book（AI）/C++teamwork/.vscode/`
 
 **c_cpp_properties.json**:
 ```json
